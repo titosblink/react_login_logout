@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>i.am.aluu</title>
+
+  <!-- Primary Meta Tags -->
+  <meta name="title" content="Play - Free Open Source HTML Bootstrap Template by UIdeck">
+  <meta name="description" content="Play - Free Open Source HTML Bootstrap Template by UIdeck Team">
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://uideck.com/play/">
+  <meta property="og:title" content="Play - Free Open Source HTML Bootstrap Template by UIdeck">
+  <meta property="og:description" content="Play - Free Open Source HTML Bootstrap Template by UIdeck Team">
+  <meta property="og:image" content="https://uideck.com/wp-content/uploads/2021/09/play-meta-bs.jpg">
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="https://uideck.com/play/">
+  <meta property="twitter:title" content="Play - Free Open Source HTML Bootstrap Template by UIdeck">
+  <meta property="twitter:description" content="Play - Free Open Source HTML Bootstrap Template by UIdeck Team">
+  <meta property="twitter:image" content="https://uideck.com/wp-content/uploads/2021/09/play-meta-bs.jpg">
+
+  <!--====== Favicon Icon ======-->
+  <link rel="shortcut icon" href="assets/images/favicon.svg" type="image/svg" />
+
+  <!-- ===== All CSS files ===== -->
+  <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="assets/css/animate.css" />
+  <link rel="stylesheet" href="assets/css/lineicons.css" />
+  <link rel="stylesheet" href="assets/css/ud-styles.css" />
+</head>
+
+<body>
+  <noscript>You need to enable JavaScript to run this app.</noscript>
+  <div id="root"></div>
+  <!--
+      This HTML file is a template.
+      If you open it directly in the browser, you will see an empty page.
+
+      You can add webfonts, meta tags, or analytics to this file.
+      The build step will place the bundled scripts into the <body> tag.
+
+      To begin the development, run `npm start` or `yarn start`.
+      To create a production bundle, use `npm run build` or `yarn build`.
+    -->
+  <!-- ====== Footer End ====== -->
+
+  <!-- ====== Back To Top Start ====== -->
+  <a href="javascript:void(0)" class="back-to-top">
+    <i class="lni lni-chevron-up"> </i>
+  </a>
+  <!-- ====== Back To Top End ====== -->
+
+  <!-- ====== All Javascript Files ====== -->
+  <script src="assets/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/js/wow.min.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script>
+    // ==== for menu scroll
+    const pageLink = document.querySelectorAll(".ud-menu-scroll");
+
+    pageLink.forEach((elem) => {
+      elem.addEventListener("click", (e) => {
+        e.preventDefault();
+        document.querySelector(elem.getAttribute("href")).scrollIntoView({
+          behavior: "smooth",
+          offsetTop: 1 - 60,
+        });
+      });
+    });
+
+    // section menu active
+    function onScroll() {
+  const sections = document.querySelectorAll(".ud-menu-scroll");
+  const scrollPos =
+    window.pageYOffset ||
+    document.documentElement.scrollTop ||
+    document.body.scrollTop;
+
+  for (let i = 0; i < sections.length; i++) {
+    const currLink = sections[i];
+    const val = currLink.getAttribute("href");
+
+    // only handle anchors (#id)
+    if (val && val.startsWith("#")) {
+      const refElement = document.querySelector(val);
+
+      if (refElement) {
+        // subtract header height so it accounts for fixed header
+        const headerHeight = document.querySelector("header").offsetHeight;
+        const refTop = refElement.offsetTop - headerHeight;
+        const refBottom = refTop + refElement.offsetHeight;
+
+        if (scrollPos >= refTop && scrollPos < refBottom) {
+          currLink.classList.add("active");
+        } else {
+          currLink.classList.remove("active");
+        }
+      }
+    }
+  }
+}
+
+document.addEventListener("scroll", onScroll);
+
+
+  </script>
+</body>
+
+</html>
